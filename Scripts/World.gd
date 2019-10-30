@@ -1,13 +1,14 @@
 extends Node
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export var score = 0
+export var lives = 3
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func increase_score(s):
+ score += int(s)
+ find_node("Score").update_score()
+ 
+func decrease_lives():
+ lives -= 1
+ find_node("Lives").update_lives()
+ if lives <= 0:
+  get_tree().change_scene("res://Scenes/End.tscn")
