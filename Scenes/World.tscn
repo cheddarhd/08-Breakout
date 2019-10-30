@@ -1,0 +1,206 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Scripts/paddle.gd" type="Script" id=1]
+[ext_resource path="res://Assets/paddle.png" type="Texture" id=2]
+[ext_resource path="res://Scripts/ball.gd" type="Script" id=3]
+[ext_resource path="res://Assets/ball.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Tile.tscn" type="PackedScene" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 53.311, 12.2888 )
+
+[sub_resource type="PhysicsMaterial" id=2]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 12.018
+
+[node name="World" type="Node"]
+
+[node name="Paddle" type="KinematicBody2D" parent="."]
+position = Vector2( 512, 544 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Paddle"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paddle"]
+shape = SubResource( 1 )
+
+[node name="Ball" type="RigidBody2D" parent="."]
+position = Vector2( 512, 480 )
+mode = 2
+physics_material_override = SubResource( 2 )
+gravity_scale = 0.0
+linear_velocity = Vector2( 200, -200 )
+linear_damp = 0.0
+angular_damp = 0.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Ball"]
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource( 3 )
+
+[node name="Wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall"]
+position = Vector2( -0.814484, 1.629 )
+polygon = PoolVector2Array( 0, 640, 0, 0, 1024, 0, 1024, 640, 1088, 640, 1088, -64, -64, -64, -64, 640, 0, 640 )
+
+[node name="Tiles" type="Node" parent="."]
+
+[node name="Gray Tiles" type="Node" parent="Tiles"]
+
+[node name="Tile" parent="Tiles/Gray Tiles" instance=ExtResource( 5 )]
+position = Vector2( 101.2, 309.936 )
+
+[node name="Tile2" parent="Tiles/Gray Tiles" instance=ExtResource( 5 )]
+position = Vector2( 196.401, 309.936 )
+
+[node name="Tile3" parent="Tiles/Gray Tiles" instance=ExtResource( 5 )]
+position = Vector2( 294.941, 313.276 )
+
+[node name="Tile4" parent="Tiles/Gray Tiles" instance=ExtResource( 5 )]
+position = Vector2( 393.482, 316.616 )
+
+[node name="Tile5" parent="Tiles/Gray Tiles" instance=ExtResource( 5 )]
+position = Vector2( 497.034, 316.616 )
+
+[node name="Tile6" parent="Tiles/Gray Tiles" instance=ExtResource( 5 )]
+position = Vector2( 592.234, 316.616 )
+
+[node name="Tile7" parent="Tiles/Gray Tiles" instance=ExtResource( 5 )]
+position = Vector2( 689.105, 318.287 )
+
+[node name="Tile8" parent="Tiles/Gray Tiles" instance=ExtResource( 5 )]
+position = Vector2( 792.656, 321.627 )
+
+[node name="Tile9" parent="Tiles/Gray Tiles" instance=ExtResource( 5 )]
+position = Vector2( 892.784, 319.038 )
+
+[node name="Red Tiles" type="Node" parent="Tiles"]
+
+[node name="Tile" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 102.87, 258.16 )
+
+[node name="Tile2" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 206.422, 254.82 )
+
+[node name="Tile3" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 296.779, 256.156 )
+
+[node name="Tile4" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 396.823, 254.82 )
+
+[node name="Tile5" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 502.044, 253.149 )
+
+[node name="Tile6" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 595.574, 254.82 )
+
+[node name="Tile7" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 689.105, 258.16 )
+
+[node name="Tile8" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 795.996, 261.5 )
+
+[node name="Tile9" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+position = Vector2( 894.537, 264.841 )
+
+[node name="Blue Tiles" type="Node" parent="Tiles"]
+
+[node name="Tile" parent="Tiles/Blue Tiles" instance=ExtResource( 5 )]
+position = Vector2( 104.958, 205.633 )
+rotation = 3.13383
+
+[node name="Tile2" parent="Tiles/Blue Tiles" instance=ExtResource( 5 )]
+position = Vector2( 204.919, 207.219 )
+
+[node name="Tile3" parent="Tiles/Blue Tiles" instance=ExtResource( 5 )]
+position = Vector2( 296.946, 200.873 )
+
+[node name="Tile4" parent="Tiles/Blue Tiles" instance=ExtResource( 5 )]
+position = Vector2( 393.733, 200.873 )
+
+[node name="Tile5" parent="Tiles/Blue Tiles" instance=ExtResource( 5 )]
+position = Vector2( 503.213, 202.459 )
+
+[node name="Tile6" parent="Tiles/Blue Tiles" instance=ExtResource( 5 )]
+position = Vector2( 595.24, 204.046 )
+
+[node name="Tile7" parent="Tiles/Blue Tiles" instance=ExtResource( 5 )]
+position = Vector2( 690.441, 205.633 )
+
+[node name="Tile8" parent="Tiles/Blue Tiles" instance=ExtResource( 5 )]
+position = Vector2( 793.575, 205.633 )
+
+[node name="Tile9" parent="Tiles/Blue Tiles" instance=ExtResource( 5 )]
+position = Vector2( 893.535, 210.393 )
+rotation = -0.0365145
+
+[node name="Purple Tiles" type="Node" parent="Tiles"]
+
+[node name="Tile" parent="Tiles/Purple Tiles" instance=ExtResource( 5 )]
+position = Vector2( 111.305, 150.099 )
+
+[node name="Tile2" parent="Tiles/Purple Tiles" instance=ExtResource( 5 )]
+position = Vector2( 209.679, 151.686 )
+
+[node name="Tile3" parent="Tiles/Purple Tiles" instance=ExtResource( 5 )]
+position = Vector2( 301.706, 151.686 )
+
+[node name="Tile4" parent="Tiles/Purple Tiles" instance=ExtResource( 5 )]
+position = Vector2( 401.666, 150.099 )
+
+[node name="Tile5" parent="Tiles/Purple Tiles" instance=ExtResource( 5 )]
+position = Vector2( 506.387, 153.272 )
+
+[node name="Tile6" parent="Tiles/Purple Tiles" instance=ExtResource( 5 )]
+position = Vector2( 603.174, 154.859 )
+
+[node name="Tile7" parent="Tiles/Purple Tiles" instance=ExtResource( 5 )]
+position = Vector2( 693.614, 154.859 )
+
+[node name="Tile8" parent="Tiles/Purple Tiles" instance=ExtResource( 5 )]
+position = Vector2( 796.748, 156.446 )
+
+[node name="Tile9" parent="Tiles/Purple Tiles" instance=ExtResource( 5 )]
+position = Vector2( 896.708, 154.859 )
+
+[node name="Green Tiles" type="Node" parent="Tiles"]
+
+[node name="Tile" parent="Tiles/Green Tiles" instance=ExtResource( 5 )]
+position = Vector2( 119.238, 100.912 )
+
+[node name="Tile2" parent="Tiles/Green Tiles" instance=ExtResource( 5 )]
+position = Vector2( 214.439, 100.912 )
+
+[node name="Tile3" parent="Tiles/Green Tiles" instance=ExtResource( 5 )]
+position = Vector2( 306.466, 102.499 )
+
+[node name="Tile4" parent="Tiles/Green Tiles" instance=ExtResource( 5 )]
+position = Vector2( 404.839, 100.912 )
+
+[node name="Tile5" parent="Tiles/Green Tiles" instance=ExtResource( 5 )]
+position = Vector2( 509.56, 100.912 )
+
+[node name="Tile6" parent="Tiles/Green Tiles" instance=ExtResource( 5 )]
+position = Vector2( 603.174, 102.499 )
+
+[node name="Tile7" parent="Tiles/Green Tiles" instance=ExtResource( 5 )]
+position = Vector2( 696.788, 100.912 )
+
+[node name="Tile8" parent="Tiles/Green Tiles" instance=ExtResource( 5 )]
+position = Vector2( 795.161, 102.499 )
+
+[node name="Tile9" parent="Tiles/Green Tiles" instance=ExtResource( 5 )]
+position = Vector2( 903.055, 100.912 )
